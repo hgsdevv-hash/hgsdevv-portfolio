@@ -208,18 +208,108 @@ document.querySelectorAll(".glow").forEach((card) => {
   });
 });
 
-// ---------- Easter egg: código Konami ----------
-const konami = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+// ---------- Easter egg: código Konami (↑ ↑ ↓ ↓ ← → ← → B A) ----------
+// O site treme e a tela "quebra" por alguns segundos.
+const konami = ["arrowup","arrowup","arrowdown","arrowdown","arrowleft","arrowright","arrowleft","arrowright","b","a"];
 let konamiStep = 0;
+let screenBroken = false;
 
 document.addEventListener("keydown", (event) => {
-  konamiStep = event.key === konami[konamiStep] ? konamiStep + 1 : 0;
+  const key = event.key.toLowerCase();                 // aceita B/A com Caps Lock
+  if (key === konami[konamiStep]) konamiStep++;
+  else konamiStep = key === konami[0] ? 1 : 0;
+
   if (konamiStep === konami.length) {
     konamiStep = 0;
-    document.body.animate(
-      [{ filter: "hue-rotate(0deg)" }, { filter: "hue-rotate(360deg)" }],
-      { duration: 1500 }
-    );
-    console.log("🎮 +30 vidas! Obrigado por visitar a hgsDevv.");
+    breakScreen();
   }
 });
+
+const rand = (min, max) => min + Math.random() * (max - min);
+
+// gera o desenho das rachaduras: linhas que saem do ponto de impacto + anéis de teia
+function buildCracks(w, h) {
+  const cx = w * rand(0.35, 0.65);
+  const cy = h * rand(0.3, 0.6);
+  const reach = Math.hypot(w, h);
+  const rays = Math.round(rand(13, 18));
+  const paths = [];
+  const rayPoints = [];
+
+  for (let i = 0; i < rays; i++) {
+    const angle = (i / rays) * Math.PI * 2 + rand(-0.15, 0.15);
+    const points = [[cx, cy]];
+    let dist = 0;
+    let a = angle;
+    while (dist < reach) {
+      dist += rand(30, 90);
+      a += rand(-0.12, 0.12);                           // rachadura em zigue-zague
+      points.push([cx + Math.cos(a) * dist, cy + Math.sin(a) * dist]);
+    }
+    rayPoints.push(points);
+    paths.push({ d: "M" + points.map((p) => p.map(Math.round).join(" ")).join(" L"), width: rand(1, 2.2), delay: 0 });
+  }
+
+  // anéis que ligam rachaduras vizinhas (efeito de teia de aranha)
+  [2, 4, 7, 11].forEach((ring, r) => {
+    for (let i = 0; i < rays; i++) {
+      if (Math.random() < 0.25) continue;               // nem todo anel fecha
+      const a = rayPoints[i][Math.min(ring, rayPoints[i].length - 1)];
+      const b = rayPoints[(i + 1) % rays][Math.min(ring + (Math.random() < 0.5 ? 1 : 0), rayPoints[(i + 1) % rays].length - 1)];
+      const mx = (a[0] + b[0]) / 2 + rand(-12, 12);
+      const my = (a[1] + b[1]) / 2 + rand(-12, 12);
+      paths.push({
+        d: `M${Math.round(a[0])} ${Math.round(a[1])} Q${Math.round(mx)} ${Math.round(my)} ${Math.round(b[0])} ${Math.round(b[1])}`,
+        width: rand(0.6, 1.4),
+        delay: 0.08 + r * 0.06,
+      });
+    }
+  });
+
+  return { cx, cy, paths };
+}
+
+function breakScreen() {
+  if (screenBroken) return;
+  screenBroken = true;
+
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const { cx, cy, paths } = buildCracks(w, h);
+
+  const lines = paths.map((p) =>
+    `<path d="${p.d}" pathLength="1" class="crack-shadow" stroke-width="${(p.width + 1.5).toFixed(1)}" style="animation-delay:${p.delay}s"/>` +
+    `<path d="${p.d}" pathLength="1" class="crack-line" stroke-width="${p.width.toFixed(1)}" style="animation-delay:${p.delay}s"/>`
+  ).join("");
+
+  const overlay = document.createElement("div");
+  overlay.className = "crack-overlay";
+  overlay.setAttribute("aria-hidden", "true");
+  overlay.innerHTML = `
+    <div class="crack-flash" style="--x:${cx}px; --y:${cy}px"></div>
+    <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+      <defs>
+        <radialGradient id="impact">
+          <stop offset="0" stop-color="#fff" stop-opacity=".9"/>
+          <stop offset=".35" stop-color="#fff" stop-opacity=".25"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="${cx}" cy="${cy}" r="70" fill="url(#impact)" class="crack-impact"/>
+      ${lines}
+    </svg>`;
+  document.body.appendChild(overlay);
+
+  // site treme (e o celular vibra, se suportar)
+  if (!reduceMotion) document.querySelector(".layout").classList.add("shake");
+  if (navigator.vibrate) navigator.vibrate([80, 40, 120]);
+
+  setTimeout(() => document.querySelector(".layout").classList.remove("shake"), 700);
+  setTimeout(() => overlay.classList.add("fade"), 3200);
+  setTimeout(() => {
+    overlay.remove();
+    screenBroken = false;
+  }, 4000);
+
+  console.log("🎮 Você quebrou a tela! Brincadeira, tá tudo bem. Obrigado por visitar a hgsDevv.");
+}

@@ -691,6 +691,50 @@ strong { color: var(--text-strong); font-weight: 600; }
 }
 .project.muted.visible { opacity: .55; }
 
+/* ---------- Easter egg: tela quebrada ---------- */
+.layout.shake { animation: shake .65s cubic-bezier(.36, .07, .19, .97); }
+@keyframes shake {
+  10%, 90% { transform: translate(-2px, 1px) rotate(-.2deg); }
+  20%, 80% { transform: translate(4px, -2px) rotate(.3deg); }
+  30%, 50%, 70% { transform: translate(-8px, 3px) rotate(-.5deg); }
+  40%, 60% { transform: translate(8px, -3px) rotate(.5deg); }
+}
+
+.crack-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity .8s ease;
+}
+.crack-overlay.fade { opacity: 0; }
+.crack-overlay svg { width: 100%; height: 100%; }
+
+/* clarão no ponto do impacto */
+.crack-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, .55), transparent 45%);
+  animation: crackFlash .5s ease-out forwards;
+}
+@keyframes crackFlash { from { opacity: 1; } to { opacity: 0; } }
+
+.crack-impact { animation: crackImpact .4s ease-out both; transform-box: fill-box; transform-origin: center; }
+@keyframes crackImpact { from { transform: scale(.2); opacity: 0; } 40% { opacity: 1; } to { transform: scale(1); opacity: .7; } }
+
+/* as rachaduras se "desenham" rapidamente a partir do impacto */
+.crack-line, .crack-shadow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: crackDraw .35s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+.crack-line   { stroke: rgba(255, 255, 255, .9); }
+.crack-shadow { stroke: rgba(0, 0, 0, .45); transform: translate(1px, 1px); }
+@keyframes crackDraw { to { stroke-dashoffset: 0; } }
+
 /* ---------- Responsivo ---------- */
 @media (max-width: 960px) {
   .layout { grid-template-columns: 1fr; gap: 0; }
@@ -710,4 +754,5 @@ strong { color: var(--text-strong); font-weight: 600; }
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1; transform: none; filter: none; }
   .scrub .w { color: var(--text); }
+  .crack-line, .crack-shadow { stroke-dashoffset: 0; }
 }
