@@ -596,6 +596,19 @@ strong { color: var(--text-strong); font-weight: 600; }
 .project h3 { font-size: 1.05rem; color: var(--text-strong); }
 .project p { font-size: .92rem; color: var(--muted); }
 .project .btn { margin-top: auto; align-self: flex-start; }
+.project-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: auto; }
+.project-links .btn { margin-top: 0; }
+
+/* prévia com captura de tela real do projeto */
+.project-shot { display: block; padding: 0; background: var(--surface-2); }
+.project-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform .6s var(--ease);
+}
+.project:hover .project-shot img { transform: scale(1.04); }
 .project.muted { opacity: .55; border-style: dashed; }
 .project.muted:hover { transform: none; border-color: var(--border); }
 
