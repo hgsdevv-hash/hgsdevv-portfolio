@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Higor Gonçalves | hgsDevv</title>
+  <meta name="description" content="Portfólio de Higor Gonçalves dos Santos, estudante de Ciência da Computação, suporte técnico e criador da hgsDevv, seu projeto pessoal de desenvolvimento web.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=13">
+</head>
+<body>
+
+  <div class="layout">
+
+    <!-- ===== Coluna fixa (esquerda) ===== -->
+    <header class="sidebar">
+      <a href="#sobre" class="logo" aria-label="hgsDevv, início">
+        <span class="logo-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        hgs<span>Devv</span>
+      </a>
+
+      <div class="profile">
+        <div class="photo">
+          <img src="assets/img/perfil.jpg" alt="Foto de Higor Gonçalves dos Santos" onerror="this.remove()">
+          <span class="photo-fallback" aria-hidden="true">HG</span>
+        </div>
+
+        <h1 class="name">Higor Gonçalves<br>dos Santos</h1>
+        <p class="role">Estudante de Ciência da Computação e Suporte Técnico</p>
+        <p class="tagline">Criador da <strong>hgsDevv</strong>, meu projeto pessoal de desenvolvimento web.</p>
+        <a href="#contato" class="btn-primary">Fale comigo</a>
+      </div>
+
+      <nav class="nav" aria-label="Seções">
+        <a href="#sobre"><span class="nav-btn"></span>Sobre</a>
+        <a href="#experiencia"><span class="nav-btn"></span>Experiência</a>
+        <a href="#formacao"><span class="nav-btn"></span>Formação</a>
+        <a href="#projetos"><span class="nav-btn"></span>Projetos</a>
+        <a href="#contato"><span class="nav-btn"></span>Contato</a>
+      </nav>
+
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/higorgsantos/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+        </a>
+        <a href="https://github.com/hgsdevv-hash" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+        </a>
+        <a href="mailto:hgsdevv@gmail.com" aria-label="E-mail">
+          <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3z"/></svg>
+        </a>
+        <a href="https://wa.me/5519989003251" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+        </a>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro ou escuro">
+        <span class="theme-key">SELECT</span> tema
+      </button>
+    </header>
+
+    <!-- ===== Divisória com progresso de rolagem ===== -->
+    <div class="divider" aria-hidden="true">
+      <span class="divider-fill" id="dividerFill"></span>
+    </div>
+
+    <!-- ===== Conteúdo (direita) ===== -->
+    <main class="content">
+
+      <!-- Mascote: cobrinha do Snake -->
+      <div class="snake-box" data-reveal>
+        <div class="snake-info">
+          <span class="snake-name">Pixel, a cobrinha da hgsDevv</span>
+          <span class="snake-score">maçãs <b id="snakeScore">0</b></span>
+        </div>
+        <canvas id="snake" class="snake-canvas" role="img"
+                aria-label="Animação de uma cobrinha em pixel art, como no jogo Snake, comendo maçãs."></canvas>
+        <p class="snake-hint">clique na faixa para soltar uma maçã</p>
+      </div>
+
+      <!-- SOBRE -->
+      <section id="sobre" class="section">
+        <h2 class="section-title" data-reveal>Sobre</h2>
+
+        <div class="scrub">
+          <p>Sou estudante de Ciência da Computação na Faculdade de Americana e atuo como estagiário de suporte técnico na Futura Sistemas, onde lido todos os dias com sistemas, clientes e resolução de problemas.</p>
+          <p>Tenho base em Java e Python, versiono meus projetos com Git e GitHub e falo inglês avançado. Antes da tecnologia passei pela indústria e pela logística, experiências que me ensinaram disciplina, trabalho em equipe e atenção aos detalhes.</p>
+          <p>Nas horas livres mantenho a hgsDevv, um projeto pessoal onde pratico e coloco no ar o que aprendo sobre desenvolvimento web.</p>
+        </div>
+
+        <!-- Editor de código (inspirado no banner do meu LinkedIn) -->
+        <div class="editor" data-ui data-reveal>
+          <div class="editor-tabs">
+            <span class="editor-tab active">Higor.java</span>
+            <span class="editor-tab">sobre.py</span>
+          </div>
+          <pre class="editor-body" id="editor" aria-label="Trecho de código em Java descrevendo o Higor"></pre>
+        </div>
+
+        <!-- Stack: teclas no estilo dos botões do controle -->
+        <h3 class="sub-title" data-reveal>Stack e competências</h3>
+        <ul class="stack">
+          <li data-reveal="pop">Java</li>
+          <li data-reveal="pop">Python</li>
+          <li data-reveal="pop">JavaScript</li>
+          <li data-reveal="pop">HTML e CSS</li>
+          <li data-reveal="pop">Git e GitHub</li>
+          <li data-reveal="pop">Lógica de programação</li>
+          <li data-reveal="pop">Ciência de dados</li>
+          <li data-reveal="pop">Suporte técnico</li>
+          <li data-reveal="pop">Inglês avançado</li>
+        </ul>
+      </section>
+
+      <!-- EXPERIÊNCIA -->
+      <section id="experiencia" class="section">
+        <h2 class="section-title" data-reveal>Experiência</h2>
+
+        <ol class="timeline">
+          <li class="item" data-reveal="right">
+            <p class="period">Mai 2026 <br>até hoje</p>
+            <div>
+              <h3>Estagiário de Apoio Técnico <span class="at">na Futura Sistemas</span></h3>
+              <p class="meta"><span>Meio período</span><span>Santa Bárbara d'Oeste, SP</span><span>Presencial</span></p>
+              <p>Atendimento e suporte técnico aos clientes da empresa de software. Diagnóstico e resolução de problemas nos sistemas, orientação de usuários e registro de chamados.</p>
+              <ul class="tags"><li>Suporte técnico</li><li>Atendimento</li><li>Sistemas</li></ul>
+            </div>
+          </li>
+
+          <li class="item" data-reveal="right">
+            <p class="period">Jul 2023 <br>a Jun 2024</p>
+            <div>
+              <h3>Almoxarife <span class="at">na Bandini &amp; Cia Ltda</span></h3>
+              <p class="meta"><span>Tempo integral</span><span>Santa Bárbara d'Oeste, SP</span><span>Presencial</span></p>
+              <p>Controle de estoque, recebimento e organização de materiais.</p>
+              <ul class="tags"><li>Trabalho em equipe</li><li>Organização</li></ul>
+            </div>
+          </li>
+
+          <li class="item" data-reveal="right">
+            <p class="period">Fev 2021 <br>a Dez 2022</p>
+            <div>
+              <h3>Aprendiz Industrial <span class="at">na Nova Plast</span></h3>
+              <p class="meta"><span>Meio período</span><span>Nova Odessa, SP</span></p>
+              <p>Programa de aprendizagem industrial pelo SENAI, com atuação em manutenção mecânica e processos de usinagem.</p>
+              <ul class="tags"><li>Manutenção mecânica</li><li>Usinagem</li></ul>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- FORMAÇÃO -->
+      <section id="formacao" class="section">
+        <h2 class="section-title" data-reveal>Formação e Certificados</h2>
+
+        <div class="card edu" data-reveal>
+          <p class="period">2025 a 2029</p>
+          <h3>Bacharelado em Ciência da Computação</h3>
+          <p class="meta"><span>Faculdade de Americana</span></p>
+        </div>
+
+        <ul class="certs">
+          <li data-reveal><h4>IT Customer Support Basics</h4><span>Cisco, out. 2026</span></li>
+          <li data-reveal><h4>Introdução à Ciência de Dados</h4><span>Santander Open Academy, ago. 2026</span></li>
+          <li data-reveal><h4>Fundamentos de Python</h4><span>SENAI Americana</span></li>
+          <li data-reveal><h4>Lógica de Programação</h4><span>Curso em Vídeo</span></li>
+        </ul>
+      </section>
+
+      <!-- PROJETOS -->
+      <section id="projetos" class="section">
+        <h2 class="section-title" data-reveal>Projetos</h2>
+
+        <div class="projects">
+          <!-- TODO: duplicar este bloco para cada projeto -->
+          <article class="project glow" data-reveal="zoom">
+            <div class="cart-top"><span class="cart-slot"></span><span class="cart-id" aria-hidden="true">HGS 01</span></div>
+            <div class="project-preview"><span>hgs<b>Devv</b></span></div>
+            <div class="project-body">
+              <h3>Portfólio hgsDevv</h3>
+              <p>Este site, feito com HTML, CSS e JavaScript puro como parte do projeto pessoal hgsDevv. Responsivo, com tema claro e escuro e uma cobrinha de mascote.</p>
+              <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              <a href="https://github.com/hgsdevv-hash/hgsdevv-portfolio" target="_blank" rel="noopener" class="btn">Ver código</a>
+            </div>
+          </article>
+
+          <article class="project glow" data-reveal="zoom">
+            <div class="cart-top"><span class="cart-slot"></span><span class="cart-id" aria-hidden="true">HGS 02</span></div>
+            <a class="project-preview project-shot" href="https://hgsdevv-hash.github.io/rei-das-antenas/" target="_blank" rel="noopener" aria-label="Abrir o site da Rei das Antenas">
+              <img src="assets/img/rei-das-antenas.jpg" alt="Tela inicial do site da Rei das Antenas, com uma antena e um medidor de sinal" loading="lazy">
+            </a>
+            <div class="project-body">
+              <h3>Rei das Antenas</h3>
+              <p>Landing page para uma loja de antenas, câmeras e portões de Santa Bárbara d'Oeste. Medidor de sinal animado, cards de serviço que abrem com orçamento direto no WhatsApp e avaliações do Google.</p>
+              <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>SEO local</li></ul>
+              <div class="project-links">
+                <a href="https://hgsdevv-hash.github.io/rei-das-antenas/" target="_blank" rel="noopener" class="btn">Ver site</a>
+                <a href="https://github.com/hgsdevv-hash/rei-das-antenas" target="_blank" rel="noopener" class="btn">Ver código</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTATO -->
+      <section id="contato" class="section">
+        <h2 class="section-title" data-reveal>Contato</h2>
+        <p class="big-cta" data-reveal>Vamos conversar?</p>
+        <p class="lead" data-reveal>Estou sempre aberto a novos contatos e a boas conversas sobre tecnologia.</p>
+
+        <div class="contact-grid">
+          <a href="mailto:hgsdevv@gmail.com" class="contact-item glow" data-reveal>
+            <span class="label">E-mail</span>
+            <span class="value">hgsdevv@gmail.com</span>
+          </a>
+          <a href="https://wa.me/5519989003251" target="_blank" rel="noopener" class="contact-item glow" data-reveal>
+            <span class="label">WhatsApp</span>
+            <span class="value">(19) 98900-3251</span>
+          </a>
+          <a href="https://www.linkedin.com/in/higorgsantos/" target="_blank" rel="noopener" class="contact-item glow" data-reveal>
+            <span class="label">LinkedIn</span>
+            <span class="value">linkedin.com/in/higorgsantos</span>
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© <span id="year"></span> Higor Gonçalves dos Santos. hgsDevv é um projeto pessoal.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="js/main.js?v=13"></script>
+  <script src="js/snake.js?v=13"></script>
+</body>
+</html>
